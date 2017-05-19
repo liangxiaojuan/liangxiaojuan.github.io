@@ -965,7 +965,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #222;
+  background: red;
 }
 .site-meta {
   margin: 0;
