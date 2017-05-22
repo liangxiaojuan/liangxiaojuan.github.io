@@ -93,13 +93,13 @@
 <meta name="description" content="并发用 Promises 替代回调回调不够整洁并会造成大量的嵌套。ES6 内嵌了 Promises，使用它吧。 反例:1234567891011121314require(&apos;request&apos;).get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;, function(err, response) &amp;#123;  if (err) &amp;#123">
 <meta name="keywords" content="javascript,JavaScript编码风格">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript编码风格(二)">
+<meta property="og:title" content="JavaScript编码风格(三)">
 <meta property="og:url" content="yangyi1024.com/2016/12/02/JavaScript编码风格(三)/index.html">
 <meta property="og:site_name" content="杨怡">
 <meta property="og:description" content="并发用 Promises 替代回调回调不够整洁并会造成大量的嵌套。ES6 内嵌了 Promises，使用它吧。 反例:1234567891011121314require(&apos;request&apos;).get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;, function(err, response) &amp;#123;  if (err) &amp;#123">
-<meta property="og:updated_time" content="2017-05-22T06:14:39.000Z">
+<meta property="og:updated_time" content="2017-05-22T06:16:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript编码风格(二)">
+<meta name="twitter:title" content="JavaScript编码风格(三)">
 <meta name="twitter:description" content="并发用 Promises 替代回调回调不够整洁并会造成大量的嵌套。ES6 内嵌了 Promises，使用它吧。 反例:1234567891011121314require(&apos;request&apos;).get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;, function(err, response) &amp;#123;  if (err) &amp;#123">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>JavaScript编码风格(二) | 杨怡</title>
+  <title>JavaScript编码风格(三) | 杨怡</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript编码风格(二)</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript编码风格(三)</h1>
         
 
         <div class="post-meta">
@@ -391,7 +391,7 @@
 
           
           
-             <span id="/2016/12/02/JavaScript编码风格(三)/" class="leancloud_visitors" data-flag-title="JavaScript编码风格(二)">
+             <span id="/2016/12/02/JavaScript编码风格(三)/" class="leancloud_visitors" data-flag-title="JavaScript编码风格(三)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -421,6 +421,7 @@
       
         <h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a><strong>并发</strong></h2><h3 id="用-Promises-替代回调"><a href="#用-Promises-替代回调" class="headerlink" title="用 Promises 替代回调"></a>用 Promises 替代回调</h3><p>回调不够整洁并会造成大量的嵌套。ES6 内嵌了 Promises，使用它吧。</p>
 <p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'request'</span>).get(<span class="string">'https://en.wikipedia.org/wiki/Robert_Cecil_Martin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, response</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="built_in">console</span>.error(err);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">require</span>(<span class="string">'fs'</span>).writeFile(<span class="string">'article.html'</span>, response.body, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="built_in">console</span>.error(err);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'File written'</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+ <a id="more"></a>
 <p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'request-promise'</span>).get(<span class="string">'https://en.wikipedia.org/wiki/Robert_Cecil_Martin'</span>)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">'fs-promise'</span>).writeFile(<span class="string">'article.html'</span>, response);</div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'File written'</span>);</div><div class="line">  &#125;)</div><div class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(err);</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
 <h3 id="Async-Await-是较-Promises-更好的选择"><a href="#Async-Await-是较-Promises-更好的选择" class="headerlink" title="Async/Await 是较 Promises 更好的选择"></a>Async/Await 是较 Promises 更好的选择</h3><p>Promises 是较回调而言更好的一种选择，但 ES7 中的 async 和 await 更胜过 Promises。</p>
 <p>在能使用 ES7 特性的情况下可以尽量使用他们替代 Promises。</p>
@@ -600,7 +601,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
