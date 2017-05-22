@@ -1,0 +1,1030 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,JavaScript编码风格," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="对象和数据结构使用 getters 和 settersJS 没有接口或类型，因此实现这一模式是很困难的，因为我们并没有类似 public 和 private 的关键词。 然而，使用 getters 和 setters 获取对象的数据远比直接使用点操作符具有优势。为什么呢？  当需要对获取的对象属性执行额外操作时。 执行 set 时可以增加规则对要变量的合法性进行判断。 封装了内部逻辑。 在存取时可">
+<meta name="keywords" content="javascript,JavaScript编码风格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript编码风格(二)">
+<meta property="og:url" content="yangyi1024.com/2016/12/01/JavaScript编码风格(二)/index.html">
+<meta property="og:site_name" content="杨怡">
+<meta property="og:description" content="对象和数据结构使用 getters 和 settersJS 没有接口或类型，因此实现这一模式是很困难的，因为我们并没有类似 public 和 private 的关键词。 然而，使用 getters 和 setters 获取对象的数据远比直接使用点操作符具有优势。为什么呢？  当需要对获取的对象属性执行额外操作时。 执行 set 时可以增加规则对要变量的合法性进行判断。 封装了内部逻辑。 在存取时可">
+<meta property="og:updated_time" content="2017-05-22T06:13:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript编码风格(二)">
+<meta name="twitter:description" content="对象和数据结构使用 getters 和 settersJS 没有接口或类型，因此实现这一模式是很困难的，因为我们并没有类似 public 和 private 的关键词。 然而，使用 getters 和 setters 获取对象的数据远比直接使用点操作符具有优势。为什么呢？  当需要对获取的对象属性执行额外操作时。 执行 set 时可以增加规则对要变量的合法性进行判断。 封装了内部逻辑。 在存取时可">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RX92U58051',
+      apiKey: 'c175c8edd2d83fa65b4653848032866a',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索文章","hits_empty":"抱歉,本宝宝没有找到「${query}」相关的内容","hits_stats":"${hits} 条相关条目,使用了${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="yangyi1024.com/2016/12/01/JavaScript编码风格(二)/"/>
+
+
+
+
+
+  <title>JavaScript编码风格(二) | 杨怡</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?145bdff30ecfbdfdfabc6bcc0d5a6830";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">专注前端,提笔胡撰</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2016/12/01/JavaScript编码风格(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript编码风格(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T16:32:40+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/12/01/JavaScript编码风格(二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/01/JavaScript编码风格(二)/" class="leancloud_visitors" data-flag-title="JavaScript编码风格(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="对象和数据结构"><a href="#对象和数据结构" class="headerlink" title="对象和数据结构"></a><strong>对象和数据结构</strong></h2><h3 id="使用-getters-和-setters"><a href="#使用-getters-和-setters" class="headerlink" title="使用 getters 和 setters"></a>使用 getters 和 setters</h3><p>JS 没有接口或类型，因此实现这一模式是很困难的，因为我们并没有类似 <code>public</code> 和 <code>private</code> 的关键词。</p>
+<p>然而，使用 getters 和 setters 获取对象的数据远比直接使用点操作符具有优势。为什么呢？</p>
+<ol>
+<li>当需要对获取的对象属性执行额外操作时。</li>
+<li>执行 <code>set</code> 时可以增加规则对要变量的合法性进行判断。</li>
+<li>封装了内部逻辑。</li>
+<li>在存取时可以方便的增加日志和错误处理。</li>
+<li>继承该类时可以重载默认行为。</li>
+<li>从服务器获取数据时可以进行懒加载。</li>
+</ol>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BankAccount</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">	   <span class="keyword">this</span>.balance = <span class="number">1000</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> bankAccount = <span class="keyword">new</span> BankAccount();</div><div class="line"></div><div class="line"><span class="comment">// Buy shoes...</span></div><div class="line">bankAccount.balance = bankAccount.balance - <span class="number">100</span>;</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BankAccount</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">	   <span class="keyword">this</span>.balance = <span class="number">1000</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// It doesn't have to be prefixed with `get` or `set` to be a getter/setter</span></div><div class="line">  withdraw(amount) &#123;</div><div class="line">  	<span class="keyword">if</span> (verifyAmountCanBeDeducted(amount)) &#123;</div><div class="line">  	  <span class="keyword">this</span>.balance -= amount;</div><div class="line">  	&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> bankAccount = <span class="keyword">new</span> BankAccount();</div><div class="line"></div><div class="line"><span class="comment">// Buy shoes...</span></div><div class="line">bankAccount.withdraw(<span class="number">100</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="让对象拥有私有成员"><a href="#让对象拥有私有成员" class="headerlink" title="让对象拥有私有成员"></a>让对象拥有私有成员</h3><p>可以通过闭包完成</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> Employee = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Employee.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> employee = <span class="keyword">new</span> Employee(<span class="string">'John Doe'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Employee name: '</span> + employee.getName()); <span class="comment">// Employee name: John Doe</span></div><div class="line"><span class="keyword">delete</span> employee.name;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Employee name: '</span> + employee.getName()); <span class="comment">// Employee name: undefined</span></div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Employee = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Employee</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> name;</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> Employee;</div><div class="line">&#125;());</div><div class="line"></div><div class="line"><span class="keyword">var</span> employee = <span class="keyword">new</span> Employee(<span class="string">'John Doe'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Employee name: '</span> + employee.getName()); <span class="comment">// Employee name: John Doe</span></div><div class="line"><span class="keyword">delete</span> employee.name;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Employee name: '</span> + employee.getName()); <span class="comment">// Employee name: John Doe</span></div></pre></td></tr></table></figure></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a><strong>类</strong></h2><h3 id="单一职责原则-SRP"><a href="#单一职责原则-SRP" class="headerlink" title="单一职责原则 (SRP)"></a>单一职责原则 (SRP)</h3><p>如《代码整洁之道》一书中所述，“修改一个类的理由不应该超过一个”。</p>
+<p>将多个功能塞进一个类的想法很诱人，但这将导致你的类无法达到概念上的内聚，并经常不得不进行修改。</p>
+<p>最小化对一个类需要修改的次数是非常有必要的。如果一个类具有太多太杂的功能，当你对其中一小部分进行修改时，将很难想象到这一修够对代码库中依赖该类的其他模块会带来什么样的影响。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSettings</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(user) &#123;</div><div class="line">    <span class="keyword">this</span>.user = user;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  changeSettings(settings) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.verifyCredentials(user)) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  verifyCredentials(user) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserAuth</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(user) &#123;</div><div class="line">    <span class="keyword">this</span>.user = user;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  verifyCredentials() &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSettings</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(user) &#123;</div><div class="line">    <span class="keyword">this</span>.user = user;</div><div class="line">    <span class="keyword">this</span>.auth = <span class="keyword">new</span> UserAuth(user)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  changeSettings(settings) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.auth.verifyCredentials()) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="开-闭原则-OCP"><a href="#开-闭原则-OCP" class="headerlink" title="开/闭原则 (OCP)"></a>开/闭原则 (OCP)</h3><p>“代码实体(类，模块，函数等)应该易于扩展，难于修改。”</p>
+<p>这一原则指的是我们应允许用户方便的扩展我们代码模块的功能，而不需要打开 js 文件源码手动对其进行修改。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AjaxRequester</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="comment">// What if we wanted another HTTP Method, like DELETE? We would have to</span></div><div class="line">    <span class="comment">// open this file up and modify this and put it in manually.</span></div><div class="line">    <span class="keyword">this</span>.HTTP_METHODS = [<span class="string">'POST'</span>, <span class="string">'PUT'</span>, <span class="string">'GET'</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get(url) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AjaxRequester</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.HTTP_METHODS = [<span class="string">'POST'</span>, <span class="string">'PUT'</span>, <span class="string">'GET'</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get(url) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  addHTTPMethod(method) &#123;</div><div class="line">    <span class="keyword">this</span>.HTTP_METHODS.push(method);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="利斯科夫替代原则-LSP"><a href="#利斯科夫替代原则-LSP" class="headerlink" title="利斯科夫替代原则 (LSP)"></a>利斯科夫替代原则 (LSP)</h3><p>“子类对象应该能够替换其超类对象被使用”。</p>
+<p>也就是说，如果有一个父类和一个子类，当采用子类替换父类时不应该产生错误的结果。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.width = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.height = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setColor(color) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render(area) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setWidth(width) &#123;</div><div class="line">    <span class="keyword">this</span>.width = width;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setHeight(height) &#123;</div><div class="line">    <span class="keyword">this</span>.height = height;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getArea() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.width * <span class="keyword">this</span>.height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Rectangle</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setWidth(width) &#123;</div><div class="line">    <span class="keyword">this</span>.width = width;</div><div class="line">    <span class="keyword">this</span>.height = width;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setHeight(height) &#123;</div><div class="line">    <span class="keyword">this</span>.width = height;</div><div class="line">    <span class="keyword">this</span>.height = height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderLargeRectangles</span>(<span class="params">rectangles</span>) </span>&#123;</div><div class="line">  rectangles.forEach(<span class="function">(<span class="params">rectangle</span>) =&gt;</span> &#123;</div><div class="line">    rectangle.setWidth(<span class="number">4</span>);</div><div class="line">    rectangle.setHeight(<span class="number">5</span>);</div><div class="line">    <span class="keyword">let</span> area = rectangle.getArea(); <span class="comment">// BAD: Will return 25 for Square. Should be 20.</span></div><div class="line">    rectangle.render(area);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> rectangles = [<span class="keyword">new</span> Rectangle(), <span class="keyword">new</span> Rectangle(), <span class="keyword">new</span> Square()];</div><div class="line">renderLargeRectangles(rectangles);</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;&#125;</div><div class="line"></div><div class="line">  setColor(color) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render(area) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">this</span>.width = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.height = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setWidth(width) &#123;</div><div class="line">    <span class="keyword">this</span>.width = width;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setHeight(height) &#123;</div><div class="line">    <span class="keyword">this</span>.height = height;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getArea() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.width * <span class="keyword">this</span>.height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">this</span>.length = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setLength(length) &#123;</div><div class="line">    <span class="keyword">this</span>.length = length;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getArea() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.length * <span class="keyword">this</span>.length;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderLargeShapes</span>(<span class="params">shapes</span>) </span>&#123;</div><div class="line">  shapes.forEach(<span class="function">(<span class="params">shape</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">switch</span> (shape.constructor.name) &#123;</div><div class="line">      <span class="keyword">case</span> <span class="string">'Square'</span>:</div><div class="line">        shape.setLength(<span class="number">5</span>);</div><div class="line">      <span class="keyword">case</span> <span class="string">'Rectangle'</span>:</div><div class="line">        shape.setWidth(<span class="number">4</span>);</div><div class="line">        shape.setHeight(<span class="number">5</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> area = shape.getArea();</div><div class="line">    shape.render(area);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> shapes = [<span class="keyword">new</span> Rectangle(), <span class="keyword">new</span> Rectangle(), <span class="keyword">new</span> Square()];</div><div class="line">renderLargeShapes(shapes);</div></pre></td></tr></table></figure></p>
+<h3 id="接口隔离原则-ISP"><a href="#接口隔离原则-ISP" class="headerlink" title="接口隔离原则 (ISP)"></a>接口隔离原则 (ISP)</h3><p>“客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上。”</p>
+<p>在 JS 中，当一个类需要许多参数设置才能生成一个对象时，或许大多时候不需要设置这么多的参数。此时减少对配置参数数量的需求是有益的。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DOMTraverser</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(settings) &#123;</div><div class="line">    <span class="keyword">this</span>.settings = settings;</div><div class="line">    <span class="keyword">this</span>.setup();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setup() &#123;</div><div class="line">    <span class="keyword">this</span>.rootNode = <span class="keyword">this</span>.settings.rootNode;</div><div class="line">    <span class="keyword">this</span>.animationModule.setup();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  traverse() &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> $ = <span class="keyword">new</span> DOMTraverser(&#123;</div><div class="line">  <span class="attr">rootNode</span>: <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>),</div><div class="line">  <span class="attr">animationModule</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Most of the time, we won't need to animate when traversing.</span></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DOMTraverser</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(settings) &#123;</div><div class="line">    <span class="keyword">this</span>.settings = settings;</div><div class="line">    <span class="keyword">this</span>.options = settings.options;</div><div class="line">    <span class="keyword">this</span>.setup();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setup() &#123;</div><div class="line">    <span class="keyword">this</span>.rootNode = <span class="keyword">this</span>.settings.rootNode;</div><div class="line">    <span class="keyword">this</span>.setupOptions();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setupOptions() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.options.animationModule) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  traverse() &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> $ = <span class="keyword">new</span> DOMTraverser(&#123;</div><div class="line">  <span class="attr">rootNode</span>: <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>),</div><div class="line">  <span class="attr">options</span>: &#123;</div><div class="line">    <span class="attr">animationModule</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="依赖反转原则-DIP"><a href="#依赖反转原则-DIP" class="headerlink" title="依赖反转原则 (DIP)"></a>依赖反转原则 (DIP)</h3><p>该原则有两个核心点：</p>
+<ol>
+<li>高层模块不应该依赖于低层模块。他们都应该依赖于抽象接口。</li>
+<li>抽象接口应该脱离具体实现，具体实现应该依赖于抽象接口。</li>
+</ol>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">InventoryTracker</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(items) &#123;</div><div class="line">    <span class="keyword">this</span>.items = items;</div><div class="line"></div><div class="line">    <span class="comment">// BAD: We have created a dependency on a specific request implementation.</span></div><div class="line">    <span class="comment">// We should just have requestItems depend on a request method: `request`</span></div><div class="line">    <span class="keyword">this</span>.requester = <span class="keyword">new</span> InventoryRequester();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  requestItems() &#123;</div><div class="line">    <span class="keyword">this</span>.items.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.requester.requestItem(item);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">InventoryRequester</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.REQ_METHODS = [<span class="string">'HTTP'</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  requestItem(item) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> inventoryTracker = <span class="keyword">new</span> InventoryTracker([<span class="string">'apples'</span>, <span class="string">'bananas'</span>]);</div><div class="line">inventoryTracker.requestItems();</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">InventoryTracker</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(items, requester) &#123;</div><div class="line">    <span class="keyword">this</span>.items = items;</div><div class="line">    <span class="keyword">this</span>.requester = requester;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  requestItems() &#123;</div><div class="line">    <span class="keyword">this</span>.items.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.requester.requestItem(item);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">InventoryRequesterV1</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.REQ_METHODS = [<span class="string">'HTTP'</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  requestItem(item) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">InventoryRequesterV2</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.REQ_METHODS = [<span class="string">'WS'</span>];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  requestItem(item) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// By constructing our dependencies externally and injecting them, we can easily</span></div><div class="line"><span class="comment">// substitute our request module for a fancy new one that uses WebSockets.</span></div><div class="line"><span class="keyword">let</span> inventoryTracker = <span class="keyword">new</span> InventoryTracker([<span class="string">'apples'</span>, <span class="string">'bananas'</span>], <span class="keyword">new</span> InventoryRequesterV2());</div><div class="line">inventoryTracker.requestItems();</div></pre></td></tr></table></figure></p>
+<h3 id="使用-ES6-的-classes-而不是-ES5-的-Function"><a href="#使用-ES6-的-classes-而不是-ES5-的-Function" class="headerlink" title="使用 ES6 的 classes 而不是 ES5 的 Function"></a>使用 ES6 的 classes 而不是 ES5 的 Function</h3><p>典型的 ES5 的类(function)在继承、构造和方法定义方面可读性较差。</p>
+<p>当需要继承时，优先选用 classes。</p>
+<p>但是，当在需要更大更复杂的对象时，最好优先选择更小的 function 而非 classes。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Animal = <span class="function"><span class="keyword">function</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Animal)) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Instantiate Animal with `new`"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Animal.prototype.move = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Mammal = <span class="function"><span class="keyword">function</span>(<span class="params">age, furColor</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Mammal)) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Instantiate Mammal with `new`"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Animal.call(<span class="keyword">this</span>, age);</div><div class="line">    <span class="keyword">this</span>.furColor = furColor;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Mammal.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</div><div class="line">Mammal.prototype.constructor = Mammal;</div><div class="line">Mammal.prototype.liveBirth = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Human = <span class="function"><span class="keyword">function</span>(<span class="params">age, furColor, languageSpoken</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Human)) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Instantiate Human with `new`"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Mammal.call(<span class="keyword">this</span>, age, furColor);</div><div class="line">    <span class="keyword">this</span>.languageSpoken = languageSpoken;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Human.prototype = <span class="built_in">Object</span>.create(Mammal.prototype);</div><div class="line">Human.prototype.constructor = Human;</div><div class="line">Human.prototype.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(age) &#123;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    move() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(age, furColor) &#123;</div><div class="line">        <span class="keyword">super</span>(age);</div><div class="line">        <span class="keyword">this</span>.furColor = furColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    liveBirth() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> <span class="keyword">extends</span> <span class="title">Mammal</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(age, furColor, languageSpoken) &#123;</div><div class="line">        <span class="keyword">super</span>(age, furColor);</div><div class="line">        <span class="keyword">this</span>.languageSpoken = languageSpoken;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    speak() &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用方法链"><a href="#使用方法链" class="headerlink" title="使用方法链"></a>使用方法链</h3><p>这里我们的理解与《代码整洁之道》的建议有些不同。</p>
+<p>有争论说方法链不够干净且违反了<a href="https://en.wikipedia.org/wiki/Law_of_Demeter" target="_blank" rel="external">德米特法则</a>，也许这是对的，但这种方法在 JS 及许多库(如 JQuery)中显得非常实用。</p>
+<p>因此，我认为在 JS 中使用方法链是非常合适的。在 class 的函数中返回 this，能够方便的将类需要执行的多个方法链接起来。</p>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.make = <span class="string">'Honda'</span>;</div><div class="line">    <span class="keyword">this</span>.model = <span class="string">'Accord'</span>;</div><div class="line">    <span class="keyword">this</span>.color = <span class="string">'white'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setMake(make) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setModel(model) &#123;</div><div class="line">    <span class="keyword">this</span>.model = model;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setColor(color) &#123;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  save() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.make, <span class="keyword">this</span>.model, <span class="keyword">this</span>.color);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> car = <span class="keyword">new</span> Car();</div><div class="line">car.setColor(<span class="string">'pink'</span>);</div><div class="line">car.setMake(<span class="string">'Ford'</span>);</div><div class="line">car.setModel(<span class="string">'F-150'</span>)</div><div class="line">car.save();</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>.make = <span class="string">'Honda'</span>;</div><div class="line">    <span class="keyword">this</span>.model = <span class="string">'Accord'</span>;</div><div class="line">    <span class="keyword">this</span>.color = <span class="string">'white'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setMake(make) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> Returning this for chaining</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setModel(model) &#123;</div><div class="line">    <span class="keyword">this</span>.model = model;</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> Returning this for chaining</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setColor(color) &#123;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> Returning this for chaining</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  save() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.make, <span class="keyword">this</span>.model, <span class="keyword">this</span>.color);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> car = <span class="keyword">new</span> Car()</div><div class="line">  .setColor(<span class="string">'pink'</span>)</div><div class="line">  .setMake(<span class="string">'Ford'</span>)</div><div class="line">  .setModel(<span class="string">'F-150'</span>)</div><div class="line">  .save();</div></pre></td></tr></table></figure></p>
+<h3 id="优先使用组合模式而非继承"><a href="#优先使用组合模式而非继承" class="headerlink" title="优先使用组合模式而非继承"></a>优先使用组合模式而非继承</h3><p>在著名的<a href="https://en.wikipedia.org/wiki/Design_Patterns" target="_blank" rel="external">设计模式</a>一书中提到，应多使用组合模式而非继承。</p>
+<p>这么做有许多优点，在想要使用继承前，多想想能否通过组合模式满足需求吧。</p>
+<p>那么，在什么时候继承具有更大的优势呢？这取决于你的具体需求，但大多情况下，可以遵守以下三点：</p>
+<ol>
+<li>继承关系表现为”是一个”而非”有一个”(如动物-&gt;人 和 用户-&gt;用户细节)</li>
+<li>可以复用基类的代码(“Human”可以看成是”All animal”的一种)</li>
+<li>希望当基类改变时所有派生类都受到影响(如修改”all animals”移动时的卡路里消耗量)</li>
+</ol>
+<p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, email) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.email = email;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Bad because Employees "have" tax data. EmployeeTaxData is not a type of Employee</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmployeeTaxData</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(ssn, salary) &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">this</span>.ssn = ssn;</div><div class="line">    <span class="keyword">this</span>.salary = salary;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, email) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.email = email;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setTaxData(ssn, salary) &#123;</div><div class="line">    <span class="keyword">this</span>.taxData = <span class="keyword">new</span> EmployeeTaxData(ssn, salary);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmployeeTaxData</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(ssn, salary) &#123;</div><div class="line">    <span class="keyword">this</span>.ssn = ssn;</div><div class="line">    <span class="keyword">this</span>.salary = salary;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a><strong>测试</strong></h2><p><a href="http://gotwarlost.github.io/istanbul/" target="_blank" rel="external">一些好的覆盖工具</a>。</p>
+<p><a href="http://jstherightway.org/#testing-tools" target="_blank" rel="external">一些好的 JS 测试框架</a>。</p>
+<h3 id="单一的测试每个概念"><a href="#单一的测试每个概念" class="headerlink" title="单一的测试每个概念"></a>单一的测试每个概念</h3><p><strong>反例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line"></div><div class="line">describe(<span class="string">'MakeMomentJSGreatAgain'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  it(<span class="string">'handles date boundaries'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> date;</div><div class="line"></div><div class="line">    date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'1/1/2015'</span>);</div><div class="line">    date.addDays(<span class="number">30</span>);</div><div class="line">    date.shouldEqual(<span class="string">'1/31/2015'</span>);</div><div class="line"></div><div class="line">    date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'2/1/2016'</span>);</div><div class="line">    date.addDays(<span class="number">28</span>);</div><div class="line">    assert.equal(<span class="string">'02/29/2016'</span>, date);</div><div class="line"></div><div class="line">    date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'2/1/2015'</span>);</div><div class="line">    date.addDays(<span class="number">28</span>);</div><div class="line">    assert.equal(<span class="string">'03/01/2015'</span>, date);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>正例</strong>:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line"></div><div class="line">describe(<span class="string">'MakeMomentJSGreatAgain'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  it(<span class="string">'handles 30-day months'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'1/1/2015'</span>);</div><div class="line">    date.addDays(<span class="number">30</span>);</div><div class="line">    date.shouldEqual(<span class="string">'1/31/2015'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'handles leap year'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'2/1/2016'</span>);</div><div class="line">    date.addDays(<span class="number">28</span>);</div><div class="line">    assert.equal(<span class="string">'02/29/2016'</span>, date);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'handles non-leap year'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> MakeMomentJSGreatAgain(<span class="string">'2/1/2015'</span>);</div><div class="line">    date.addDays(<span class="number">28</span>);</div><div class="line">    assert.equal(<span class="string">'03/01/2015'</span>, date);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/JavaScript编码风格/" rel="tag"># JavaScript编码风格</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/JavaScript编码风格(一)/" rel="next" title="JavaScript编码风格(一)">
+                <i class="fa fa-chevron-left"></i> JavaScript编码风格(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/02/JavaScript编码风格(三)/" rel="prev" title="JavaScript编码风格(二)">
+                JavaScript编码风格(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460"
+               alt="杨怡" />
+          <p class="site-author-name" itemprop="name">杨怡</p>
+           
+              <p class="site-description motion-element" itemprop="description">看得开，过得好。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/your-user-name" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/your-user-name" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/your-user-name" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/your-user-name" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象和数据结构"><span class="nav-number">1.</span> <span class="nav-text">对象和数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-getters-和-setters"><span class="nav-number">1.1.</span> <span class="nav-text">使用 getters 和 setters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让对象拥有私有成员"><span class="nav-number">1.2.</span> <span class="nav-text">让对象拥有私有成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">2.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一职责原则-SRP"><span class="nav-number">2.1.</span> <span class="nav-text">单一职责原则 (SRP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开-闭原则-OCP"><span class="nav-number">2.2.</span> <span class="nav-text">开/闭原则 (OCP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利斯科夫替代原则-LSP"><span class="nav-number">2.3.</span> <span class="nav-text">利斯科夫替代原则 (LSP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口隔离原则-ISP"><span class="nav-number">2.4.</span> <span class="nav-text">接口隔离原则 (ISP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖反转原则-DIP"><span class="nav-number">2.5.</span> <span class="nav-text">依赖反转原则 (DIP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-ES6-的-classes-而不是-ES5-的-Function"><span class="nav-number">2.6.</span> <span class="nav-text">使用 ES6 的 classes 而不是 ES5 的 Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法链"><span class="nav-number">2.7.</span> <span class="nav-text">使用方法链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先使用组合模式而非继承"><span class="nav-number">2.8.</span> <span class="nav-text">优先使用组合模式而非继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一的测试每个概念"><span class="nav-number">3.1.</span> <span class="nav-text">单一的测试每个概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨怡</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "1043f6d328cd4a0fa7bdc6eeca4bf488",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zg4KvaiBsK02iPlg5gC6o6Ii-gzGzoHsz", "HA8wwQkYi3CSdHTYLaG1JfpE");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
