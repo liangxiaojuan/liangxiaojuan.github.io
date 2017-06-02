@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="首先 首发博客: 我的博客 项目源码: 源码  项目预览:  预览 上一章: 《学习不一样的vue(1): 环境搭建》  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
+<meta name="description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(1):环境搭建》 我的Q群: meteor高手群   vue学习交流群  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
 <meta name="keywords" content="vue,学习不一样的Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习不一样的vue(2):项目分析">
 <meta property="og:url" content="yangyi1024.com/2017/06/01/学习不一样的vue(2): 项目分析/index.html">
 <meta property="og:site_name" content="杨怡">
-<meta property="og:description" content="首先 首发博客: 我的博客 项目源码: 源码  项目预览:  预览 上一章: 《学习不一样的vue(1): 环境搭建》  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
+<meta property="og:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(1):环境搭建》 我的Q群: meteor高手群   vue学习交流群  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
 <meta property="og:image" content="https://dn-mhke0kuv.qbox.me/bb40996b51dffea46806.png">
-<meta property="og:updated_time" content="2017-06-02T08:03:35.000Z">
+<meta property="og:updated_time" content="2017-06-02T08:21:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习不一样的vue(2):项目分析">
-<meta name="twitter:description" content="首先 首发博客: 我的博客 项目源码: 源码  项目预览:  预览 上一章: 《学习不一样的vue(1): 环境搭建》  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
+<meta name="twitter:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(1):环境搭建》 我的Q群: meteor高手群   vue学习交流群  项目分析2.1.1 需求分析首页我们拿到一张原型设计稿. 从原型设计稿看出，我们得到以下的需求:  注: 左边的待办项称为‘待办事项’，右边的内容部分文字称为’待办单项‘">
 <meta name="twitter:image" content="https://dn-mhke0kuv.qbox.me/bb40996b51dffea46806.png">
 
 
@@ -423,9 +423,10 @@
       
         <h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><ul>
 <li>首发博客: <a href="http://yangyi1024.com/">我的博客</a></li>
-<li>项目源码: <a href="https://github.com/liangxiaojuan/vue-todos" target="_blank" rel="external">源码</a> </li>
+<li>项目源码: <a href="https://github.com/liangxiaojuan/vue-todos" target="_blank" rel="external">源码</a>(喜欢请star)</li>
 <li>项目预览:  <a href="http://yangyi1024.com/todo">预览</a></li>
-<li>上一章: <a href="http://yangyi1024.com/todo">《学习不一样的vue(1): 环境搭建》</a></li>
+<li>上一章: <a href="http://yangyi1024.com/2017/05/31/%E5%AD%A6%E4%B9%A0%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84Vue1:%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">《学习不一样的vue(1):环境搭建》</a></li>
+<li>我的Q群: <a href="//shang.qq.com/wpa/qunwpa?idkey=e8a92b7b9b0178d7205d049c46e87fe1ae39492f6ec98c7087480cb9d9856452">meteor高手群</a>   <a href="//shang.qq.com/wpa/qunwpa?idkey=017239cb91831381d1e91086ff83f8d1949c742a293b4b76dcd5e91527cbe61f">vue学习交流群</a></li>
 </ul>
 <h2 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h2><h3 id="2-1-1-需求分析"><a href="#2-1-1-需求分析" class="headerlink" title="2.1.1 需求分析"></a>2.1.1 需求分析</h3><pre><code>首页我们拿到一张原型设计稿.
 </code></pre><p><img src="https://dn-mhke0kuv.qbox.me/bb40996b51dffea46806.png" alt=""><br>从原型设计稿看出，我们得到以下的需求:</p>
@@ -488,7 +489,10 @@
 <h4 id="修改-待办事项标题，删除，锁定待办事项"><a href="#修改-待办事项标题，删除，锁定待办事项" class="headerlink" title="修改 待办事项标题，删除，锁定待办事项"></a>修改 待办事项标题，删除，锁定待办事项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">api: /todo/editTodo (post)</div><div class="line">/**</div><div class="line">* 虽然这里有 修改，删除，锁定三个操作,但是他都是修改单条数据,所有*我们可以合并在一个接口</div><div class="line">*/</div><div class="line">params: &#123;</div><div class="line"> id: String,  </div><div class="line"> titie: String, </div><div class="line"> isDelete: Boolean, </div><div class="line"> locked: Boolean</div><div class="line">&#125;</div><div class="line"></div><div class="line">data ： &#123;&#125;</div></pre></td></tr></table></figure>
 <h4 id="新增-待办单项"><a href="#新增-待办单项" class="headerlink" title="新增 待办单项"></a>新增 待办单项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">api: /todo/addRecord (post)</div><div class="line">params: &#123;&#125;</div><div class="line"></div><div class="line">data ： &#123;&#125;</div></pre></td></tr></table></figure>
 <h4 id="修改-删除，完成待办单项"><a href="#修改-删除，完成待办单项" class="headerlink" title="修改,删除，完成待办单项"></a>修改,删除，完成待办单项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">api: /todo/editRecord (post)</div><div class="line">/**</div><div class="line">* 虽然这里有 修改,删除，完成三个操作,但是他都是修改单条数据</div><div class="line">* 所有我们可以合并在一个接口</div><div class="line">*/</div><div class="line">params: &#123;</div><div class="line">    text: String,</div><div class="line">    isDelete: Boolean, </div><div class="line">    checked: Boolean</div><div class="line">&#125;</div><div class="line"></div><div class="line">data ： &#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="下一章-《本地模拟数据-mockjs实战》"><a href="#下一章-《本地模拟数据-mockjs实战》" class="headerlink" title="下一章 《本地模拟数据,mockjs实战》"></a>下一章 《本地模拟数据,mockjs实战》</h3>
+<blockquote>
+<p>好了，今天我们项目分析，前期准备工作就到这里，下一章开始就是代码的实战。</p>
+</blockquote>
+
       
     </div>
 
@@ -709,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先"><span class="nav-number">1.</span> <span class="nav-text">首先</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目分析"><span class="nav-number">2.</span> <span class="nav-text">项目分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.1 需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-数据分析"><span class="nav-number">2.2.</span> <span class="nav-text">2.1.2 数据分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-api分析"><span class="nav-number">2.3.</span> <span class="nav-text">2.1.3 api分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#待办事项列表"><span class="nav-number">2.3.1.</span> <span class="nav-text">待办事项列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增待办事项"><span class="nav-number">2.3.2.</span> <span class="nav-text">新增待办事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单个待办事项查询"><span class="nav-number">2.3.3.</span> <span class="nav-text">单个待办事项查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-待办事项标题，删除，锁定待办事项"><span class="nav-number">2.3.4.</span> <span class="nav-text">修改 待办事项标题，删除，锁定待办事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增-待办单项"><span class="nav-number">2.3.5.</span> <span class="nav-text">新增 待办单项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-删除，完成待办单项"><span class="nav-number">2.3.6.</span> <span class="nav-text">修改,删除，完成待办单项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下一章-《本地模拟数据-mockjs实战》"><span class="nav-number">2.4.</span> <span class="nav-text">下一章 《本地模拟数据,mockjs实战》</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先"><span class="nav-number">1.</span> <span class="nav-text">首先</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目分析"><span class="nav-number">2.</span> <span class="nav-text">项目分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.1 需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-数据分析"><span class="nav-number">2.2.</span> <span class="nav-text">2.1.2 数据分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-api分析"><span class="nav-number">2.3.</span> <span class="nav-text">2.1.3 api分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#待办事项列表"><span class="nav-number">2.3.1.</span> <span class="nav-text">待办事项列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增待办事项"><span class="nav-number">2.3.2.</span> <span class="nav-text">新增待办事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单个待办事项查询"><span class="nav-number">2.3.3.</span> <span class="nav-text">单个待办事项查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-待办事项标题，删除，锁定待办事项"><span class="nav-number">2.3.4.</span> <span class="nav-text">修改 待办事项标题，删除，锁定待办事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增-待办单项"><span class="nav-number">2.3.5.</span> <span class="nav-text">新增 待办单项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-删除，完成待办单项"><span class="nav-number">2.3.6.</span> <span class="nav-text">修改,删除，完成待办单项</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
