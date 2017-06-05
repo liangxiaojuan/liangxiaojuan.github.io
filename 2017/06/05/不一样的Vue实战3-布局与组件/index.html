@@ -1,0 +1,1086 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue,学习不一样的Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群 首先：讲一句抱歉,周末俗事缠身,无力更博，只有今日发了。而且写博挺消耗精力的，你别看短短了几千字，需要反复的斟酌，反复的修改，如果有错误与不足的地方，请评论指正，谢谢！">
+<meta name="keywords" content="vue,学习不一样的Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不一样的Vue实战3:布局与组件">
+<meta property="og:url" content="yangyi1024.com/2017/06/05/不一样的Vue实战3-布局与组件/index.html">
+<meta property="og:site_name" content="杨怡">
+<meta property="og:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群 首先：讲一句抱歉,周末俗事缠身,无力更博，只有今日发了。而且写博挺消耗精力的，你别看短短了几千字，需要反复的斟酌，反复的修改，如果有错误与不足的地方，请评论指正，谢谢！">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/3409faf8815269c00345.png">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/1abf266e0eb2df89f057.png">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/2cfbee9b7a6ac2a9d56f.png">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/aedb0cb9215a3ac87a4e.png">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/3d7ada52538b996371ad.png">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/b7d3975aae7730378bfe.png">
+<meta property="og:updated_time" content="2017-06-05T09:38:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不一样的Vue实战3:布局与组件">
+<meta name="twitter:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群 首先：讲一句抱歉,周末俗事缠身,无力更博，只有今日发了。而且写博挺消耗精力的，你别看短短了几千字，需要反复的斟酌，反复的修改，如果有错误与不足的地方，请评论指正，谢谢！">
+<meta name="twitter:image" content="https://dn-mhke0kuv.qbox.me/3409faf8815269c00345.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RX92U58051',
+      apiKey: 'c175c8edd2d83fa65b4653848032866a',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索文章","hits_empty":"抱歉,本宝宝没有找到「${query}」相关的内容","hits_stats":"${hits} 条相关条目,使用了${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="yangyi1024.com/2017/06/05/不一样的Vue实战3-布局与组件/"/>
+
+
+
+
+
+  <title>不一样的Vue实战3:布局与组件 | 杨怡</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?145bdff30ecfbdfdfabc6bcc0d5a6830";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">专注前端,提笔胡撰</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2017/06/05/不一样的Vue实战3-布局与组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">不一样的Vue实战3:布局与组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T17:37:41+08:00">
+                2017-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/05/不一样的Vue实战3-布局与组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/05/不一样的Vue实战3-布局与组件/" class="leancloud_visitors" data-flag-title="不一样的Vue实战3:布局与组件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><ul>
+<li>首发博客: <a href="http://yangyi1024.com/">我的博客</a></li>
+<li>项目源码: <a href="https://github.com/liangxiaojuan/vue-todos" target="_blank" rel="external">源码</a>(喜欢请star)</li>
+<li>项目预览:  <a href="http://yangyi1024.com/todo">预览</a></li>
+<li>上一章: <a href="https://juejin.im/post/5930ff4fa0bb9f0058b43261" target="_blank" rel="external">《学习不一样的vue(2)实战:项目分析》</a></li>
+<li>我的Q群: <a href="//shang.qq.com/wpa/qunwpa?idkey=e8a92b7b9b0178d7205d049c46e87fe1ae39492f6ec98c7087480cb9d9856452">meteor高手群</a>   <a href="//shang.qq.com/wpa/qunwpa?idkey=017239cb91831381d1e91086ff83f8d1949c742a293b4b76dcd5e91527cbe61f">vue学习交流群</a><blockquote>
+<p>首先：讲一句抱歉,周末俗事缠身,无力更博，只有今日发了。而且写博挺消耗精力的，你别看短短了几千字，需要反复的斟酌，反复的修改，如果有错误与不足的地方，请评论指正，谢谢！</p>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>本文是结合官方的 <a href="https://cn.vuejs.org" target="_blank" rel="external">api文档</a>,进行渐进式学习,在实战中熟悉文档,在文档中理解实战。下面的代码中有详细的代码注释，和逻辑讲解,请仔细阅读。</p>
+</blockquote>
+<h3 id="3-1-1-什么是vue"><a href="#3-1-1-什么是vue" class="headerlink" title="3.1.1 什么是vue?"></a>3.1.1 什么是vue?</h3><p>如果你还不知道什么Vue是干什么的，请参见<a href="https://cn.vuejs.org/v2/guide/#Vue-js-是什么" target="_blank" rel="external">什么是vue</a>。</p>
+<h3 id="3-1-2-项目结构"><a href="#3-1-2-项目结构" class="headerlink" title="3.1.2 项目结构"></a>3.1.2 项目结构</h3><p>参考以下的目录结构，新建文件夹，下面打‘ * ’的为新建文件夹</p>
+<pre>
+├── build              // 构建服务和webpack配置
+├── config             // 项目不同环境的配置
+├── dist               // 项目build目录
+├── index.html         // 项目入口文件
+├── package.json       // 项目配置文件
+├── src                // 生产目录
+│   ├── assets         // 图片资源
+│   ├── common *          // 公共的css js 资源
+│   ├── components     // 各种组件 
+│   ├── moke *           // 本地静态数据管理文件
+│   ├── App.vue         // 主页面
+│   ├── vuex *           // vuex状态管理器
+│   ├── router    // 路由配置器
+│   └── main.js        // Webpack 预编译入口
+
+</pre>
+
+<h3 id="3-1-3-Vue-实例"><a href="#3-1-3-Vue-实例" class="headerlink" title="3.1.3 Vue 实例"></a>3.1.3 Vue 实例</h3><h4 id="新增知识点"><a href="#新增知识点" class="headerlink" title="新增知识点"></a>新增知识点</h4><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/instance.html" target="_blank" rel="external">Vue实例</a></li>
+</ul>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>打开 <strong>/src/main.js</strong> 你会看到<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>   <span class="comment">//引入vue模块</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span>  <span class="comment">//引入vue组件</span></div><div class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span> <span class="comment">// 引入路由配置文件</span></div><div class="line"></div><div class="line">Vue.config.productionTip = <span class="literal">false</span> <span class="comment">// 关闭生产模式下给出的提示</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;  <span class="comment">// 创建一个 Vue 的根实例</span></div><div class="line">  el: <span class="string">'#app'</span>, <span class="comment">//挂载id,这个实例下所有的内容都会在index.html 一个id为app的div下显示</span></div><div class="line">  router, <span class="comment">// 注入路由配置。</span></div><div class="line">  template: <span class="string">'&lt;App/&gt;'</span>, <span class="comment">//配置根模板 即打开页面显示那个组件</span></div><div class="line">  components: &#123; App &#125; <span class="comment">// 注入组件</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="3-1-4-Style"><a href="#3-1-4-Style" class="headerlink" title="3.1.4 Style"></a>3.1.4 Style</h3><h4 id="第一步-安装less"><a href="#第一步-安装less" class="headerlink" title="第一步 安装less"></a>第一步 安装less</h4><p>在终端上输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev less-loader style-loader less</div></pre></td></tr></table></figure></p>
+<h4 id="第二步-配置less"><a href="#第二步-配置less" class="headerlink" title="第二步 配置less"></a>第二步 配置less</h4><p>在 <strong>/build/webpack.base.conf.js</strong> 加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;   //复杂这个对象添加在里面</div><div class="line">        test: /\.less$/,</div><div class="line">        use: [</div><div class="line">          &apos;style-loader&apos;,</div><div class="line">          &#123; loader: &apos;css-loader&apos;, options: &#123; importLoaders: 1 &#125; &#125;,</div><div class="line">          &apos;less-loader&apos;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="第三步-下载style文件"><a href="#第三步-下载style文件" class="headerlink" title="第三步 下载style文件"></a>第三步 下载style文件</h4><p>因为本课程主要是针对Vue的实战，所以在这里不去讲解less的用法，如果感兴趣可以去<a href="http://www.bootcss.com/p/lesscss/" target="_blank" rel="external">less教程</a>学习，也不会讲每个样式怎么写,请下载<a href="https://github.com/liangxiaojuan/vue-todos/tree/master/src/common" target="_blank" rel="external">Style文件</a>,到 <strong>src/common/</strong>下。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/3409faf8815269c00345.png" alt=""></p>
+<h3 id="3-1-5-‘-vue’文件"><a href="#3-1-5-‘-vue’文件" class="headerlink" title="3.1.5  ‘.vue’文件"></a>3.1.5  ‘.vue’文件</h3><ul>
+<li><p>Vue自定义了一种后缀名名字为<code>.vue</code>文件,它将<code>html</code>, <code>js</code>, <code>css</code> 整合成一个文件,和里面 <code>template</code> <code>script</code> <code>style</code>三个区别分别依次对应。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--这里写 html --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"> <span class="keyword">export</span> <span class="keyword">default</span> &#123;&#125;;</div><div class="line"> <span class="comment">// 这里写js</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span> = <span class="string">"less"</span> <span class="attr">scoped</span>&gt;</span><span class="xml"></span></div><div class="line"> <span class="comment">&lt;!--这里写css--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>一个<code>.vue</code> 文件就等于单独组件。因为<code>.vue</code>文件是自定义的，浏览器不识别，所以要对该文件进行解析,在webpack构建中，需要安装vue-loader 对.vue文件进行解析。</p>
+</li>
+<li><code>template</code>里面最外层必须是只有一个容器</li>
+<li><code>script</code> 中的 <strong> export default {}</strong> 即导出这个组件，外部可以引用。</li>
+<li><code>style</code> 中的 <code>lang</code> 指额外表示支持的语言可以让编辑器识别,<code>scoped</code> 指这里写的css只适用于该组件。</li>
+</ul>
+<h3 id="3-1-6-新增layouts-vue-布局组件"><a href="#3-1-6-新增layouts-vue-布局组件" class="headerlink" title="3.1.6 新增layouts.vue(布局组件)"></a>3.1.6 新增layouts.vue(布局组件)</h3><blockquote>
+<p>在学习了上一小节,我们知道了 <code>.vue</code>文件是做什么用，下面我们就尝试一下。</p>
+</blockquote>
+<p>在 <em>src/components/</em>目录下新建一个文件 <strong>layouts.vue</strong>,并且复制以下代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span> &gt;</span> <span class="comment">&lt;!--最外层容器--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span> <span class="comment">&lt;!--左边的容器--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"content-container"</span>&gt;</span><span class="comment">&lt;!--右边的容器--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">export</span>  <span class="keyword">default</span> &#123;&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span>&gt;</span><span class="undefined"></span></div><div class="line">@import '../common/style/layouts.less';</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="3-1-7-修改router-路由"><a href="#3-1-7-修改router-路由" class="headerlink" title="3.1.7 修改router(路由)"></a>3.1.7 修改router(路由)</h3><h4 id="vue-router有什么用"><a href="#vue-router有什么用" class="headerlink" title="vue-router有什么用?"></a>vue-router有什么用?</h4><p>它的作用在于路由设置，用于设置页面跳转时的路径设置,它的工作原理也很简,将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。</p>
+<h4 id="新增知识点-必看"><a href="#新增知识点-必看" class="headerlink" title="新增知识点(必看):"></a>新增知识点(必看):</h4><ul>
+<li><a href="https://router.vuejs.org/zh-cn/essentials/getting-started.html" target="_blank" rel="external">vue-router简单例子</a></li>
+<li><a href="https://router.vuejs.org/zh-cn/essentials/named-routes.html" target="_blank" rel="external">命名路由</a></li>
+</ul>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步:"></a>第一步:</h4><p>打开 <strong>src/router/index.js</strong> 文件<br>复制以下代码,替换老的代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span> <span class="comment">// 导入Vue</span></div><div class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span> <span class="comment">// 导入vue-router 库</span></div><div class="line"><span class="keyword">import</span> Layouts <span class="keyword">from</span> <span class="string">'@/components/layouts'</span> <span class="comment">// 导入layouts.vue 组件</span></div><div class="line"></div><div class="line">Vue.use(Router) <span class="comment">//全局注册Router组件，它会绑定到Vue实例里面。</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123; <span class="comment">// 创建 router 实例，然后传 `routes` 配置</span></div><div class="line">  routes: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">path</span>: <span class="string">'/'</span>,  <span class="comment">//访问路径</span></div><div class="line">      name: <span class="string">'Layouts'</span>, <span class="comment">// 路径名</span></div><div class="line">      component: Layouts <span class="comment">//访问的组件,即访问‘/’,它会加载 Layouts 组件所有的内容。</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步:"></a>第二步:</h4><p>浏览器打开 <a href="http://localhost:8080/" target="_blank" rel="external">http://localhost:8080/</a> 你将看到如下的显示，那么这一步你就完成了。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/1abf266e0eb2df89f057.png" alt=""></p>
+<h3 id="3-1-8-menu-vue-菜单组件"><a href="#3-1-8-menu-vue-菜单组件" class="headerlink" title="3.1.8 menu.vue(菜单组件)"></a>3.1.8 menu.vue(菜单组件)</h3><h4 id="新增知识点-必读"><a href="#新增知识点-必读" class="headerlink" title="新增知识点(必读)"></a>新增知识点(必读)</h4><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#什么是组件？" target="_blank" rel="external">使用组件</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#局部注册" target="_blank" rel="external">局部注册组件</a></li>
+</ul>
+<h4 id="第一步-1"><a href="#第一步-1" class="headerlink" title="第一步:"></a>第一步:</h4><p>在 <em>src/components/</em>目录下新建一个文件 <strong>menu.vue</strong>,并且复制以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-todos"</span>&gt;</span>  <span class="comment">&lt;!--菜单容器--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"list-todo activeListClass list"</span> &gt;</span> <span class="comment">&lt;!--单个菜单容器--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-lock"</span> &gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>  <span class="comment">&lt;!--锁的图标--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"count-list"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="comment">&lt;!--数字--&gt;</span></div><div class="line">        星期一 <span class="comment">&lt;!--菜单内容--&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">" link-list-new"</span> &gt;</span> <span class="comment">&lt;!--新增菜单--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-plus"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      新增</div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span>&gt;</span><span class="undefined"></span></div><div class="line">@import '../common/style/menu.less';</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="第二步-1"><a href="#第二步-1" class="headerlink" title="第二步:"></a>第二步:</h4><p>我们在回到 Layouts.vue,并且新增以下打<code>*</code>代码。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span> <span class="comment">&lt;!--左边的容器 里面加上组件 menus--&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">menus</span>&gt;</span><span class="tag">&lt;/<span class="name">menus</span>&gt;</span> <span class="comment">&lt;!-- * --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">import</span> menus <span class="keyword">from</span> <span class="string">'./menus'</span>; <span class="comment">// * 导入刚才我们创建的 menus组件</span></div><div class="line">  <span class="keyword">export</span>  <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">components</span>: &#123; <span class="comment">// * 注册menus组件，让其可以在template调用</span></div><div class="line">      menus</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>最后我们的 <code>menu</code>组件就注册成功啦，并且引用了它，你做的怎么样了呢？</p>
+</blockquote>
+<p><img src="https://dn-mhke0kuv.qbox.me/2cfbee9b7a6ac2a9d56f.png" alt=""></p>
+<h3 id="3-1-8列表渲染"><a href="#3-1-8列表渲染" class="headerlink" title="3.1.8列表渲染"></a>3.1.8列表渲染</h3><h4 id="知识点-必读"><a href="#知识点-必读" class="headerlink" title="知识点(必读)"></a>知识点(必读)</h4><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/syntax.html" target="_blank" rel="external">模板语法</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/list.html" target="_blank" rel="external">列表渲染</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/conditional.html" target="_blank" rel="external">条件渲染</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#data-必须是函数" target="_blank" rel="external">data函数</a></li>
+</ul>
+<h4 id="第一步-2"><a href="#第一步-2" class="headerlink" title="第一步:"></a>第一步:</h4><p> 回到 <strong>src/components/menu.vue</strong>，新增以下代码。<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"list-todo list activeListClass"</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span> <span class="comment">&lt;!-- v-for 列表渲染--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-lock"</span> <span class="attr">v-if</span>=<span class="string">"item.locked"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="comment">&lt;!-- v-if 条件渲染--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"count-list"</span> <span class="attr">v-if</span>=<span class="string">"item.count &gt; </span></span></div><div class="line">      0"&gt;&#123;&#123;item.count&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      &#123;&#123;item.title&#125;&#125;   <span class="comment">&lt;!-- 数据绑定，看模板语法--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data() &#123; <span class="comment">//data函数</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">items</span>: [&#123; <span class="attr">title</span>: <span class="string">'星期一'</span>, <span class="attr">count</span>: <span class="number">1</span>, <span class="attr">locked</span>: <span class="literal">true</span> &#125;, <span class="comment">//菜单的模拟数据</span></div><div class="line">        &#123; <span class="attr">title</span>: <span class="string">'星期二'</span>, <span class="attr">count</span>: <span class="number">2</span>, <span class="attr">locked</span>: <span class="literal">true</span> &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'星期三'</span>, <span class="attr">count</span>: <span class="number">3</span>, <span class="attr">locked</span>: <span class="literal">false</span></div><div class="line">      &#125;]</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p> 完成后你将会看到以下内容。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/aedb0cb9215a3ac87a4e.png" alt=""></p>
+<blockquote>
+<p>现在整个页面我们已经左边的菜单部分，下面就是完成右边的详情部分。</p>
+</blockquote>
+<h3 id="3-1-9-todo-vue-（待办事项详情组件）"><a href="#3-1-9-todo-vue-（待办事项详情组件）" class="headerlink" title="3.1.9 todo.vue （待办事项详情组件）"></a>3.1.9 todo.vue （待办事项详情组件）</h3><h4 id="新增知识点-必读-1"><a href="#新增知识点-必读-1" class="headerlink" title="新增知识点(必读)"></a>新增知识点(必读)</h4><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/forms.html" target="_blank" rel="external">表单控件绑定</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#自定义事" target="_blank" rel="external">自定义事件</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank" rel="external">事件处理器</a></li>
+</ul>
+<h4 id="第一步-3"><a href="#第一步-3" class="headerlink" title="第一步:"></a>第一步:</h4><p>在 <em>src/components/</em> 目录下新建一个文件 <strong>todo.vue</strong>,复制以下代码。<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page lists-show"</span>&gt;</span><span class="comment">&lt;!--最外层容器--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span>&gt;</span><span class="comment">&lt;!--容器上半部分--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav-group"</span>&gt;</span> <span class="comment">&lt;!--移动端的菜单图标--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-list-unordered"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title-page"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"title-wrapper"</span>&gt;</span>&#123;&#123;todo.title&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="comment">&lt;!-- 标题--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"count-list"</span>&gt;</span>&#123;&#123;todo.count&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="comment">&lt;!-- 数目--&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav-group right"</span>&gt;</span><span class="comment">&lt;!-- 右边的删除，锁定图标容器--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"options-web"</span>&gt;</span> </div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">" nav-item"</span>&gt;</span> <span class="comment">&lt;!-- 锁定图标--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-lock"</span> <span class="attr">v-if</span>=<span class="string">"todo.locked"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-unlock"</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">" nav-item"</span>&gt;</span><span class="comment">&lt;!-- 删除图标--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-trash"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  </div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">" form todo-new input-symbol"</span>&gt;</span> <span class="comment">&lt;!-- 新增单个代办单项输入框,监听了回车事件，双向绑定text值,监听了disabled属性，在todo.locked为true的情况下无法编辑--&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">'请输入'</span>@<span class="attr">keyup.enter</span>=<span class="string">"onAdd"</span> <span class="attr">:disabled</span>=<span class="string">"todo.locked"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-add"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-scrollable list-items"</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!--容器下半部分--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">todo</span>: &#123; <span class="comment">//详情内容</span></div><div class="line">        title: <span class="string">'星期一'</span>,</div><div class="line">        <span class="attr">count</span>: <span class="number">12</span>,</div><div class="line">        <span class="attr">locked</span>: <span class="literal">false</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">items</span>: [ <span class="comment">//代办单项列表</span></div><div class="line">        &#123; <span class="attr">checked</span>: <span class="literal">false</span>, <span class="attr">text</span>: <span class="string">'新的一天'</span>, <span class="attr">isDelete</span>: <span class="literal">false</span> &#125;,</div><div class="line">        &#123; <span class="attr">checked</span>: <span class="literal">false</span>, <span class="attr">text</span>: <span class="string">'新的一天'</span>, <span class="attr">isDelete</span>: <span class="literal">false</span> &#125;,</div><div class="line">        &#123; <span class="attr">checked</span>: <span class="literal">false</span>, <span class="attr">text</span>: <span class="string">'新的一天'</span>, <span class="attr">isDelete</span>: <span class="literal">false</span> &#125;</div><div class="line">      ],</div><div class="line">      <span class="attr">text</span>: <span class="string">''</span> <span class="comment">//新增代办单项绑定的值</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    onAdd() &#123;</div><div class="line">      <span class="keyword">this</span>.items.push(&#123;</div><div class="line">        <span class="attr">checked</span>: <span class="literal">false</span>, <span class="attr">text</span>: <span class="keyword">this</span>.text, <span class="attr">isDelete</span>: <span class="literal">false</span></div><div class="line">      &#125;); <span class="comment">// 当用户点击回车时候 ，给items的值新增一个对象，this.text 即输入框绑定的值</span></div><div class="line">      <span class="keyword">this</span>.text = <span class="string">''</span>; <span class="comment">//初始化输入框的值。</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span> = <span class="string">"less"</span>&gt;</span><span class="undefined"></span></div><div class="line">@import '../common/style/nav.less';</div><div class="line">@import '../common/style/form.less';</div><div class="line">@import '../common/style/todo.less';</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="第二步-2"><a href="#第二步-2" class="headerlink" title="第二步"></a>第二步</h4><p> 打开 <strong>src/components/layouts.vue</strong>文件<br> 新加入以下代码。<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"content-container"</span>&gt;</span><span class="comment">&lt;!--右边的容器--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">todo</span>&gt;</span><span class="tag">&lt;/<span class="name">todo</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">   <span class="keyword">import</span> todo <span class="keyword">from</span> <span class="string">'./todo'</span>;</div><div class="line">  <span class="keyword">export</span>  <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">components</span>: &#123;</div><div class="line">      todo  <span class="comment">//新加的</span></div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后:"></a>最后:</h4><p><img src="https://dn-mhke0kuv.qbox.me/3d7ada52538b996371ad.png" alt=""></p>
+<h3 id="3-1-10-item-vue（代办单项组件）"><a href="#3-1-10-item-vue（代办单项组件）" class="headerlink" title="3.1.10 item.vue（代办单项组件）"></a>3.1.10 item.vue（代办单项组件）</h3><h4 id="新增知识点-1"><a href="#新增知识点-1" class="headerlink" title="新增知识点"></a>新增知识点</h4><ul>
+<li><p><a href="https://cn.vuejs.org/v2/guide/components.html#Prop" target="_blank" rel="external">父子组件通信之Prop</a></p>
+<h4 id="第一步-4"><a href="#第一步-4" class="headerlink" title="第一步:"></a>第一步:</h4><p>在 <em>src/components/</em> 目录下新建一个文件 <strong>item.vue</strong>,复制以下代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-item editingClass editing"</span>&gt;</span> <span class="comment">&lt;!-- 最外层容器--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox"</span>&gt;</span> <span class="comment">&lt;!--自定义的多选框--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">v-model</span>=<span class="string">"item.checked"</span>&gt;</span> <span class="comment">&lt;!--item.checked--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"checkbox-custom"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"item.text"</span> <span class="attr">placeholder</span>=<span class="string">'写点什么。。。'</span>&gt;</span>  <span class="comment">&lt;!--绑定item.text--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"delete-item"</span>&gt;</span> <span class="comment">&lt;!--删除图标--&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-trash"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">props</span>: [<span class="string">'item'</span>]  <span class="comment">//子组件显式的用 props 选项声明它期待获得的数据，</span></div><div class="line">  这里申明 它想要一个叫做 ’item‘的数据。</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span>&gt;</span><span class="undefined"></span></div><div class="line">@import '../common/style/list-items.less';</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="第二步-3"><a href="#第二步-3" class="headerlink" title="第二步:"></a>第二步:</h4><p>打开 <strong>src/components/todo.vue</strong>文件<br>新加入以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-scrollable list-items"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span> <span class="comment">&lt;!-- 这里`v-for`会循环我们在 `data`函数 事先定义好的 ’items‘模拟数据，循环后拿到单个对象，在通过prop把数据传输给子组件 item --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">:item</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> item <span class="keyword">from</span> <span class="string">'./item'</span>;</div><div class="line">  <span class="keyword">export</span>  <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">components</span>: &#123;  <span class="comment">//新加components对象</span></div><div class="line">      item  <span class="comment">//新加的</span></div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="最后-1"><a href="#最后-1" class="headerlink" title="最后"></a>最后</h4><p> 在新增的输入框里面，输入点东西，并且回车，看看有没有达到效果。<br><img src="https://dn-mhke0kuv.qbox.me/b7d3975aae7730378bfe.png" alt=""></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>我们知道到了<a href="https://cn.vuejs.org/v2/guide/#Vue-js-是什么" target="_blank" rel="external">什么是vue</a>.</li>
+<li>理解了<a href="https://cn.vuejs.org/v2/guide/instance.html" target="_blank" rel="external">Vue实例</a></li>
+<li>学会了安装less。</li>
+<li>知道了 <code>.vue</code> 文件  <code>template</code> <code>script</code> <code>style</code>三个区别分别用些编写<code>html</code>, <code>js</code>, <code>css</code>。</li>
+<li>知道了基本的路由的配置,<a href="https://router.vuejs.org/zh-cn/essentials/getting-started.html" target="_blank" rel="external">vue-router简单例子</a></li>
+<li>知道了<a href="https://cn.vuejs.org/v2/guide/components.html#什么是组件？" target="_blank" rel="external">什么是组件？</a></li>
+<li>必须理解的重点: <ul>
+<li><a href="https://cn.vuejs.org/v2/guide/syntax.html" target="_blank" rel="external">模板语法</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/list.html" target="_blank" rel="external">列表渲染</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/conditional.html" target="_blank" rel="external">条件渲染</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#data-必须是函数" target="_blank" rel="external">data函数</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/forms.html" target="_blank" rel="external">表单控件绑定</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#自定义事" target="_blank" rel="external">自定义事件</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank" rel="external">事件处理器</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/components.html#Prop" target="_blank" rel="external">父子组件通信之Prop</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/学习不一样的Vue/" rel="tag"># 学习不一样的Vue</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/01/学习不一样的vue(2): 项目分析/" rel="next" title="学习不一样的vue(2):项目分析">
+                <i class="fa fa-chevron-left"></i> 学习不一样的vue(2):项目分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460"
+               alt="杨怡" />
+          <p class="site-author-name" itemprop="name">杨怡</p>
+           
+              <p class="site-description motion-element" itemprop="description">看得开，过得好。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liangxiaojuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/yang-yi-73-87-31/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/c0e6158604bc" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/58661003ac502e00612a7f42" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先"><span class="nav-number">1.</span> <span class="nav-text">首先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-什么是vue"><span class="nav-number">3.</span> <span class="nav-text">3.1.1 什么是vue?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-项目结构"><span class="nav-number">4.</span> <span class="nav-text">3.1.2 项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-Vue-实例"><span class="nav-number">5.</span> <span class="nav-text">3.1.3 Vue 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增知识点"><span class="nav-number">5.1.</span> <span class="nav-text">新增知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-number">5.2.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-Style"><span class="nav-number">6.</span> <span class="nav-text">3.1.4 Style</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-安装less"><span class="nav-number">6.1.</span> <span class="nav-text">第一步 安装less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-配置less"><span class="nav-number">6.2.</span> <span class="nav-text">第二步 配置less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-下载style文件"><span class="nav-number">6.3.</span> <span class="nav-text">第三步 下载style文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-5-‘-vue’文件"><span class="nav-number">7.</span> <span class="nav-text">3.1.5  ‘.vue’文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-6-新增layouts-vue-布局组件"><span class="nav-number">8.</span> <span class="nav-text">3.1.6 新增layouts.vue(布局组件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-7-修改router-路由"><span class="nav-number">9.</span> <span class="nav-text">3.1.7 修改router(路由)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vue-router有什么用"><span class="nav-number">9.1.</span> <span class="nav-text">vue-router有什么用?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增知识点-必看"><span class="nav-number">9.2.</span> <span class="nav-text">新增知识点(必看):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步"><span class="nav-number">9.3.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步"><span class="nav-number">9.4.</span> <span class="nav-text">第二步:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-8-menu-vue-菜单组件"><span class="nav-number">10.</span> <span class="nav-text">3.1.8 menu.vue(菜单组件)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增知识点-必读"><span class="nav-number">10.1.</span> <span class="nav-text">新增知识点(必读)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-1"><span class="nav-number">10.2.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-1"><span class="nav-number">10.3.</span> <span class="nav-text">第二步:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-8列表渲染"><span class="nav-number">11.</span> <span class="nav-text">3.1.8列表渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点-必读"><span class="nav-number">11.1.</span> <span class="nav-text">知识点(必读)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-2"><span class="nav-number">11.2.</span> <span class="nav-text">第一步:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-9-todo-vue-（待办事项详情组件）"><span class="nav-number">12.</span> <span class="nav-text">3.1.9 todo.vue （待办事项详情组件）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增知识点-必读-1"><span class="nav-number">12.1.</span> <span class="nav-text">新增知识点(必读)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-3"><span class="nav-number">12.2.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-2"><span class="nav-number">12.3.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后"><span class="nav-number">12.4.</span> <span class="nav-text">最后:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-10-item-vue（代办单项组件）"><span class="nav-number">13.</span> <span class="nav-text">3.1.10 item.vue（代办单项组件）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增知识点-1"><span class="nav-number">13.1.</span> <span class="nav-text">新增知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-4"><span class="nav-number">13.2.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-3"><span class="nav-number">13.3.</span> <span class="nav-text">第二步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后-1"><span class="nav-number">13.4.</span> <span class="nav-text">最后</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">14.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨怡</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "1043f6d328cd4a0fa7bdc6eeca4bf488",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zg4KvaiBsK02iPlg5gC6o6Ii-gzGzoHsz", "HA8wwQkYi3CSdHTYLaG1JfpE");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
