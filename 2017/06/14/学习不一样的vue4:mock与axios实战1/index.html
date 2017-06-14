@@ -1,0 +1,1028 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue,学习不一样的Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群  任务一 利用 mockjs模拟2个接口，一个菜单列表数据，一个新增菜单 前台实现请求菜单数据和新增菜单的功能  Mockjs 为什么要用Mockjs?   开发时，后端还没有写好接口，前端只能写静态模拟数据">
+<meta name="keywords" content="vue,学习不一样的Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不一样的Vue实战3:布局与组件">
+<meta property="og:url" content="yangyi1024.com/2017/06/14/学习不一样的vue4:mock与axios实战1/index.html">
+<meta property="og:site_name" content="杨怡">
+<meta property="og:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群  任务一 利用 mockjs模拟2个接口，一个菜单列表数据，一个新增菜单 前台实现请求菜单数据和新增菜单的功能  Mockjs 为什么要用Mockjs?   开发时，后端还没有写好接口，前端只能写静态模拟数据">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/89d705012678e246d12a.gif">
+<meta property="og:updated_time" content="2017-06-14T03:42:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不一样的Vue实战3:布局与组件">
+<meta name="twitter:description" content="首先 首发博客: 我的博客 项目源码: 源码(喜欢请star) 项目预览:  预览 上一章: 《学习不一样的vue(2)实战:项目分析》 我的Q群: meteor高手群   vue学习交流群  任务一 利用 mockjs模拟2个接口，一个菜单列表数据，一个新增菜单 前台实现请求菜单数据和新增菜单的功能  Mockjs 为什么要用Mockjs?   开发时，后端还没有写好接口，前端只能写静态模拟数据">
+<meta name="twitter:image" content="https://dn-mhke0kuv.qbox.me/89d705012678e246d12a.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RX92U58051',
+      apiKey: 'c175c8edd2d83fa65b4653848032866a',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索文章","hits_empty":"抱歉,本宝宝没有找到「${query}」相关的内容","hits_stats":"${hits} 条相关条目,使用了${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="yangyi1024.com/2017/06/14/学习不一样的vue4:mock与axios实战1/"/>
+
+
+
+
+
+  <title>不一样的Vue实战3:布局与组件 | 杨怡</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?145bdff30ecfbdfdfabc6bcc0d5a6830";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">专注前端,提笔胡撰</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2017/06/14/学习不一样的vue4:mock与axios实战1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">不一样的Vue实战3:布局与组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T11:37:41+08:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/14/学习不一样的vue4:mock与axios实战1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/14/学习不一样的vue4:mock与axios实战1/" class="leancloud_visitors" data-flag-title="不一样的Vue实战3:布局与组件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><ul>
+<li>首发博客: <a href="http://yangyi1024.com/">我的博客</a></li>
+<li>项目源码: <a href="https://github.com/liangxiaojuan/vue-todos" target="_blank" rel="external">源码</a>(喜欢请star)</li>
+<li>项目预览:  <a href="http://yangyi1024.com/todo">预览</a></li>
+<li>上一章: <a href="https://juejin.im/post/5930ff4fa0bb9f0058b43261" target="_blank" rel="external">《学习不一样的vue(2)实战:项目分析》</a></li>
+<li>我的Q群: <a href="//shang.qq.com/wpa/qunwpa?idkey=e8a92b7b9b0178d7205d049c46e87fe1ae39492f6ec98c7087480cb9d9856452">meteor高手群</a>   <a href="//shang.qq.com/wpa/qunwpa?idkey=017239cb91831381d1e91086ff83f8d1949c742a293b4b76dcd5e91527cbe61f">vue学习交流群</a></li>
+</ul>
+<h2 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h2><ul>
+<li>利用 mockjs模拟2个接口，一个菜单列表数据，一个新增菜单</li>
+<li>前台实现请求菜单数据和新增菜单的功能</li>
+</ul>
+<h3 id="Mockjs"><a href="#Mockjs" class="headerlink" title="Mockjs"></a>Mockjs</h3><blockquote>
+<p>为什么要用Mockjs?</p>
+</blockquote>
+<ul>
+<li>开发时，后端还没有写好接口，前端只能写静态模拟数据。</li>
+<li>将模拟数据写在js文件里面,数据太多了,看的眼花缭乱。</li>
+<li>后端完成后接口后，我们前端又要挨个去改api的url。</li>
+<li><p>写模拟数据太麻烦.需要收集很多的资源，图片，地址，随机数等；</p>
+<a id="more"></a>
+<blockquote>
+<p>Mockjs可以做什么？</p>
+</blockquote>
+</li>
+<li><p>根据数据模板生成模拟数据</p>
+</li>
+<li>模拟ajax请求 生成并返回模拟数据</li>
+<li>基于html 模板生成模拟数据<blockquote>
+<p>如果你有上面痛点,去学习<a href="http://mockjs.com/" target="_blank" rel="external">mockjs官网</a>,<a href="http://mockjs.com/" target="_blank" rel="external">mockjs文档</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><blockquote>
+<p>vue.js 自2.0版本已经不对 vue-resource 更新了，官方推荐使用 axios 解决方案,而且axios 使用了<a href="http://www.jianshu.com/p/063f7e490e9a" target="_blank" rel="external">Promise</a>,所以axios是一个不错的选择。</p>
+</blockquote>
+<p>如果你还不了解axios的用法，请阅读<a href="https://segmentfault.com/a/1190000008470355" target="_blank" rel="external">axios中文文档</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>安装 <strong>mock</strong>  <strong>axios</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mockjs axios</div></pre></td></tr></table></figure>
+<ul>
+<li>安装 <strong>axios-mock-adapter</strong>  <blockquote>
+<p><em>axios-mock-adapter</em> 是<em>axios</em>与<em>mock</em>配置器，简单来说就是把二者结合在一起的工具,<a href="https://github.com/ctimmerm/axios-mock-adapter" target="_blank" rel="external">axios-mock-adapter文档</a></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install axios-mock-adapter --save-dev</div></pre></td></tr></table></figure>
+<h3 id="创建-mock"><a href="#创建-mock" class="headerlink" title="创建 mock"></a>创建 mock</h3><h4 id="新建src-mock-data-todoList-js"><a href="#新建src-mock-data-todoList-js" class="headerlink" title="新建src/mock/data/todoList.js"></a>新建<strong>src/mock/data/todoList.js</strong></h4><p>这里todoList.js文件是初始化我们需要的数据,在进行导出,复制下面以下代码到src/mock/data/todoList.js。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>; <span class="comment">// 导入mockjs 模块</span></div><div class="line"><span class="keyword">let</span> Todos = []; <span class="comment">// 定义我们需要的数据</span></div><div class="line"><span class="keyword">const</span> COUNT = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]; <span class="comment">// 定义我们需要数量</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= COUNT.length; i++) &#123;</div><div class="line">  Todos.push(Mock.mock(&#123; <span class="comment">// 根据数据模板生成模拟数据。</span></div><div class="line">    id: Mock.Random.guid(), <span class="comment">// 随机id</span></div><div class="line">    title: Mock.Random.first(), <span class="comment">// 随机标题</span></div><div class="line">    isDelete: <span class="literal">false</span>, <span class="comment">//是否删除</span></div><div class="line">    locked: Mock.Random.boolean(), <span class="comment">// 随机锁定</span></div><div class="line">    record: COUNT.map(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// 代办单项列表的数据</span></div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">text</span>: Mock.Random.cparagraph(<span class="number">2</span>), <span class="comment">// 随机内容</span></div><div class="line">        isDelete: <span class="literal">false</span>, <span class="comment">//是否删除</span></div><div class="line">        checked: Mock.Random.boolean()  <span class="comment">//是否完成</span></div><div class="line">      &#125;;</div><div class="line">    &#125;)</div><div class="line">  &#125;));</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> &#123; <span class="comment">// 导出列表数据</span></div><div class="line">  Todos</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="新建src-mock-mock-js"><a href="#新建src-mock-mock-js" class="headerlink" title="新建src/mock/mock.js"></a>新建<strong>src/mock/mock.js</strong></h4><p>这里的 <strong>mock.js</strong> 从我的命名就可以看出它是核心,它的作用就是模拟ajax请求的接口, 生成并返回模拟数据.复制下面代码到src/mock/mock.js。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</div><div class="line"><span class="keyword">import</span> MockAdapter <span class="keyword">from</span> <span class="string">'axios-mock-adapter'</span>;</div><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  Todos</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'./data/todoList'</span>; <span class="comment">// 导入Todos数据</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * mock start</div><div class="line">   */</div><div class="line">  start() &#123; <span class="comment">// 初始化函数</span></div><div class="line">    <span class="keyword">let</span> mock = <span class="keyword">new</span> MockAdapter(axios); <span class="comment">// 创建 MockAdapter 实例</span></div><div class="line">    <span class="comment">// 获取todo列表</span></div><div class="line">    mock.onGet(<span class="string">'/todo/list'</span>).reply(<span class="function"><span class="params">config</span> =&gt;</span> &#123; <span class="comment">//  config 指 前台传过来的值</span></div><div class="line">      <span class="keyword">let</span> mockTodo = Todos.map(<span class="function"><span class="params">tode</span> =&gt;</span> &#123; <span class="comment">// 重组 Todos数组，变成我们想要的数据</span></div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">          <span class="attr">id</span>: tode.id, </div><div class="line">          <span class="attr">title</span>: tode.title,</div><div class="line">          <span class="attr">count</span>: tode.record.filter(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (data.checked === <span class="literal">false</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">          &#125;).length, <span class="comment">// 过滤到record里面 ‘checked’ 为true的数据，因为它们已经被完成了</span></div><div class="line">          locked: tode.locked,</div><div class="line">          <span class="attr">isDelete</span>: tode.isDelete</div><div class="line">        &#125;;</div><div class="line">      &#125;).filter(<span class="function"><span class="params">tode</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (tode.isDelete === <span class="literal">true</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 过滤掉 ‘isDelete’为true，因为已经被删除了。</span></div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          resolve([<span class="number">200</span>, &#123;</div><div class="line">            <span class="attr">todos</span>: mockTodo <span class="comment">// 返回状态为200，并且返回todos数据</span></div><div class="line">          &#125;]);</div><div class="line">        &#125;, <span class="number">200</span>);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">        <span class="comment">// 新增一条todo</span></div><div class="line">    mock.onPost(<span class="string">'/todo/addTodo'</span>).reply(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</div><div class="line">      Todos.push(&#123;</div><div class="line">        <span class="attr">id</span>: Mock.Random.guid(),</div><div class="line">        <span class="attr">title</span>: <span class="string">'newList'</span>,</div><div class="line">        <span class="attr">isDelete</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">locked</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">record</span>: []</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          resolve([<span class="number">200</span>]);</div><div class="line">        &#125;, <span class="number">200</span>);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="导出-mock"><a href="#导出-mock" class="headerlink" title="导出 mock"></a>导出 mock</h4><ul>
+<li>新建<strong>src/mock/index.js</strong>,并且复制以下代码，这里的index作用在于方便其他文件引入。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> mock <span class="keyword">from</span> <span class="string">'./mock'</span>; </div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> mock; <span class="comment">// 导入同级下mock.js的内容，并且导出</span></div></pre></td></tr></table></figure>
+<h4 id="引入-mock"><a href="#引入-mock" class="headerlink" title="引入 mock"></a>引入 mock</h4><ul>
+<li>打开 <strong>src/main.js</strong>,并且复制以下代码，这里的作用就是全局加载mock,执行初始化函数函数，这样的本地我们设定的接口，就可以在全局调用了。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'./mock'</span>; <span class="comment">// 引入mock模块</span></div><div class="line">Mock.start(); <span class="comment">//并且执行初始化函数</span></div></pre></td></tr></table></figure>
+<h4 id="封装api函数"><a href="#封装api函数" class="headerlink" title="封装api函数"></a>封装api函数</h4><ul>
+<li>新建 <strong>src/api/api.js</strong></li>
+<li>我们把所有需要调用的接口,全部写到一个文件里面，封装成一个一个的函数，需要使用的时候我们直接调用这个函数即可,这里写的话，逻辑就比较清晰，接口需要改动的时候也能快速定位，维护成本就降低了。</li>
+<li>复制下面代码到  <strong>src/api/api.js</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>; <span class="comment">//导入axios模块</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTodoList = <span class="function"><span class="params">params</span> =&gt;</span> &#123; <span class="comment">//封装一个函数，名为getTodoList</span></div><div class="line">  <span class="keyword">return</span> axios.get(<span class="string">`/todo/list`</span>, &#123; <span class="comment">// 请求路径 ‘/todo/list’</span></div><div class="line">    params: params</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> addTodo = <span class="function"><span class="params">params</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> axios.post(<span class="string">`/todo/addTodo`</span>, params).then(<span class="function"><span class="params">res</span> =&gt;</span> res.data);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="调用接口"><a href="#调用接口" class="headerlink" title="调用接口"></a>调用接口</h4><p>知识点</p>
+<ul>
+<li><a href="https://cn.vuejs.org/v2/api/#选项-生命周期钩子" target="_blank" rel="external">vue生命周期</a></li>
+<li>created()函数,一般是实例创建完成，但是dom还没有开始渲染时候执行，如果我们想在页面渲染之前就请求数据，那么我们就把ajax放在里面。</li>
+<li><a href="https://cn.vuejs.org/v2/guide/class-and-style.html#main" target="_blank" rel="external">绑定class</a></li>
+<li>复制以下代码到 <strong>src/components/menus.vue</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--绑定点击事件goList),并且判断当todoId 时候 item.id时,文字高亮度--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-todos"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 绑定class，当items循环中的id等于我们设置的选中todoId时候,就会加上active这个calss,这样样式就会发生变化。--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"goList(item.id)"</span> <span class="attr">class</span>=<span class="string">"list-todo list activeListClass"</span> <span class="attr">:class</span>=<span class="string">"&#123;'active': item.id === todoId&#125;"</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-lock"</span> <span class="attr">v-if</span>=<span class="string">"item.locked"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"count-list"</span> <span class="attr">v-if</span>=<span class="string">"item.count &gt; 0"</span>&gt;</span>&#123;&#123;item.count&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      &#123;&#123;item.title&#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">" link-list-new"</span> @<span class="attr">click</span>=<span class="string">"addTodoList"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-plus"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      新增</div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> &#123; getTodoList, addTodo &#125; <span class="keyword">from</span> <span class="string">'../api/api'</span>; <span class="comment">// 引入我们 封装好的两个接口函数。</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">items</span>: [], <span class="comment">// 菜单数据</span></div><div class="line">      todoId: <span class="string">''</span> <span class="comment">// 默认选中id</span></div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  created() &#123; <span class="comment">// 调用请求菜单列表数据的接口</span></div><div class="line">    getTodoList(&#123;&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">const</span> TODOS = res.data.todos; <span class="comment">// 数据都会返回在res.data里面。</span></div><div class="line">      <span class="keyword">this</span>.items = TODOS; <span class="comment">// 我的把菜单数据赋值给定义的this.items</span></div><div class="line">      <span class="keyword">this</span>.todoId = TODOS[<span class="number">0</span>].id; <span class="comment">// 把菜单数据的默认的第一个对象的id赋值给默认选中的id</span></div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    goList(id) &#123; <span class="comment">// 点击菜单时候,替换选中id</span></div><div class="line">      <span class="keyword">this</span>.todoId = id;</div><div class="line">    &#125;,</div><div class="line">    addTodoList() &#123; <span class="comment">// 点击新增按钮时候</span></div><div class="line">    <span class="comment">// 调用新增菜单的接口，在接口调用成功在请求数据</span></div><div class="line">      addTodo(&#123;&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</div><div class="line">        getTodoList(&#123;&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">          <span class="keyword">const</span> TODOS = res.data.todos;</div><div class="line">          <span class="keyword">this</span>.todoId = TODOS[TODOS.length - <span class="number">1</span>].id;</div><div class="line">          <span class="keyword">this</span>.items = TODOS;</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h4><p><img src="https://dn-mhke0kuv.qbox.me/89d705012678e246d12a.gif" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/学习不一样的Vue/" rel="tag"># 学习不一样的Vue</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/05/不一样的Vue实战3-布局与组件/" rel="next" title="不一样的Vue实战3:布局与组件">
+                <i class="fa fa-chevron-left"></i> 不一样的Vue实战3:布局与组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460"
+               alt="杨怡" />
+          <p class="site-author-name" itemprop="name">杨怡</p>
+           
+              <p class="site-description motion-element" itemprop="description">看得开，过得好。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liangxiaojuan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/yang-yi-73-87-31/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/c0e6158604bc" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/58661003ac502e00612a7f42" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先"><span class="nav-number">1.</span> <span class="nav-text">首先</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务一"><span class="nav-number"></span> <span class="nav-text">任务一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mockjs"><span class="nav-number">1.</span> <span class="nav-text">Mockjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#axios"><span class="nav-number">2.</span> <span class="nav-text">axios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-mock"><span class="nav-number">4.</span> <span class="nav-text">创建 mock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建src-mock-data-todoList-js"><span class="nav-number">4.1.</span> <span class="nav-text">新建src/mock/data/todoList.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建src-mock-mock-js"><span class="nav-number">4.2.</span> <span class="nav-text">新建src/mock/mock.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导出-mock"><span class="nav-number">4.3.</span> <span class="nav-text">导出 mock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引入-mock"><span class="nav-number">4.4.</span> <span class="nav-text">引入 mock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装api函数"><span class="nav-number">4.5.</span> <span class="nav-text">封装api函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用接口"><span class="nav-number">4.6.</span> <span class="nav-text">调用接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成"><span class="nav-number">4.7.</span> <span class="nav-text">完成</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨怡</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "1043f6d328cd4a0fa7bdc6eeca4bf488",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zg4KvaiBsK02iPlg5gC6o6Ii-gzGzoHsz", "HA8wwQkYi3CSdHTYLaG1JfpE");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
