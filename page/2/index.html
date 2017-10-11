@@ -93,7 +93,7 @@
 <meta name="description" content="看得开，过得好。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="杨怡">
-<meta property="og:url" content="yangyi1024.com/categories/web前端/index.html">
+<meta property="og:url" content="yangyi1024.com/page/2/index.html">
 <meta property="og:site_name" content="杨怡">
 <meta property="og:description" content="看得开，过得好。">
 <meta name="twitter:card" content="summary">
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="yangyi1024.com/categories/web前端/"/>
+  <link rel="canonical" href="yangyi1024.com/page/2/"/>
 
 
 
 
 
-  <title>分类: web前端 | 杨怡</title>
+  <title>杨怡</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +168,9 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -299,290 +301,157 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>web前端<small>分类</small>
-      </h1>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2016/12/01/JavaScript编码风格(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/01/JavaScript编码风格(一)/" itemprop="url">JavaScript编码风格(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T14:19:50+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/01/JavaScript编码风格(一)/" class="leancloud_visitors" data-flag-title="JavaScript编码风格(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="JavaScript-编码风格"><a href="#JavaScript-编码风格" class="headerlink" title="JavaScript 编码风格"></a>JavaScript 编码风格</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://github.com/ryanmcdermott" target="_blank" rel="external">作者</a>根据 Robert C. Martin <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" target="_blank" rel="external"><em>《代码整洁之道》</em></a>总结了适用于 JavaScript 的软件工程原则<a href="https://github.com/ryanmcdermott/clean-code-javascript" target="_blank" rel="external">《Clean Code JavaScript》</a>。</p>
+<p>本文是对其的翻译。</p>
+<p>不必严格遵守本文的所有原则，有时少遵守一些效果可能会更好，具体应根据实际情况决定。这是根据《代码整洁之道》作者多年经验整理的代码优化建议，但也仅仅只是一份建议。</p>
+<p>软件工程已经发展了 50 多年，至今仍在不断前进。现在，把这些原则当作试金石，尝试将他们作为团队代码质量考核的标准之一吧。</p>
+<p>最后你需要知道的是，这些东西不会让你立刻变成一个优秀的工程师，长期奉行他们也并不意味着你能够高枕无忧不再犯错。千里之行，始于足下。我们需要时常和同行们进行代码评审，不断优化自己的代码。不要惧怕改善代码质量所需付出的努力，加油。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/01/JavaScript编码风格(一)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
     </div>
 
-    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/10/学习不一样的vue5:vuex(完结)/" itemprop="url">
-              
-                <span itemprop="name">学习不一样的vue5:vuex(完结)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-10T19:37:41+08:00"
-              content="2017-09-10" >
-          09-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/04/学习不一样的vue4:mock与axios实战2/" itemprop="url">
-              
-                <span itemprop="name">学习不一样的vue4:mock与axios实战2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-04T11:37:41+08:00"
-              content="2017-09-04" >
-          09-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/14/学习不一样的vue4:mock与axios实战1/" itemprop="url">
-              
-                <span itemprop="name">学习不一样的vue4:mock与axios实战1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-14T11:37:41+08:00"
-              content="2017-06-14" >
-          06-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/05/不一样的Vue实战3-布局与组件/" itemprop="url">
-              
-                <span itemprop="name">不一样的Vue实战3:布局与组件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-05T17:37:41+08:00"
-              content="2017-06-05" >
-          06-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/01/学习不一样的vue(2): 项目分析/" itemprop="url">
-              
-                <span itemprop="name">学习不一样的vue(2):项目分析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-01T18:54:00+08:00"
-              content="2017-06-01" >
-          06-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
+        <div class="post-eof"></div>
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/31/学习不一样的Vue1:环境搭建/" itemprop="url">
-              
-                <span itemprop="name">学习不一样的Vue1:环境搭建</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-31T11:54:00+08:00"
-              content="2017-05-31" >
-          05-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/27/和我一起学vue吧/" itemprop="url">
-              
-                <span itemprop="name">和我一起学vue吧</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-27T17:33:51+08:00"
-              content="2017-05-27" >
-          05-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/18/vue组件通信/" itemprop="url">
-              
-                <span itemprop="name">vue组件通信</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-18T14:19:50+08:00"
-              content="2017-05-18" >
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/02/JavaScript编码风格(三)/" itemprop="url">
-              
-                <span itemprop="name">JavaScript编码风格(三)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-02T10:52:40+08:00"
-              content="2016-12-02" >
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/01/JavaScript编码风格(二)/" itemprop="url">
-              
-                <span itemprop="name">JavaScript编码风格(二)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-01T16:32:40+08:00"
-              content="2016-12-01" >
-          12-01
-        </time>
-      </div>
-
-    </header>
+    </footer>
   </article>
 
 
@@ -591,9 +460,8 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/web前端/page/2/">2</a><a class="extend next" rel="next" href="/categories/web前端/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
-
 
 
 
