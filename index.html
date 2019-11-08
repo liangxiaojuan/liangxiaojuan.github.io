@@ -312,6 +312,175 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2019/11/08/2019-11-08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/2019-11-08/" itemprop="url">2019-11-08</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T15:23:55+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/11/08/2019-11-08/" class="leancloud_visitors" data-flag-title="2019-11-08">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>挑战每日一题，慢慢提升自己。</p>
+</blockquote>
+<h3 id="‘1’-‘2’-‘3’-map-parseInt-what-amp-why？"><a href="#‘1’-‘2’-‘3’-map-parseInt-what-amp-why？" class="headerlink" title="[‘1’, ‘2’, ‘3’].map(parseInt) what &amp; why？"></a>[‘1’, ‘2’, ‘3’].map(parseInt) what &amp; why？</h3><h4 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt"></a>parseInt</h4><p><code>parseInt()</code> 函数解析一个字符串参数，并返回一个指定奇数的整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const newInt = parseInt(string[, radix])</div></pre></td></tr></table></figure>
+<p><code>string</code>是要被解析的值，如果参数不是一个字符串，则将其转换为字符串(使用<code>ToString</code>抽象操作)。字符串开头的空白符将会被忽略。</p>
+<p><code>radix</code> 是一个介于2和36之间的整数，表示上述字符串的基数，默认为10，返回一个整数或者<code>NAN</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">parseInt(100); // 100</div><div class="line">parseInt(100,10); // 100</div><div class="line">parseInt(100, 2); // 4</div></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p><code>map()</code>方法创建一个新数组，其结果是改数组中的每个元素都调用一个提供的函数返回结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var new_array = arr.map(function callback(currentValue[,index[,array]])&#123;</div><div class="line"></div><div class="line">&#125;[, thisArg])</div></pre></td></tr></table></figure>
+<p>我们可以看到<code>callback</code>回调函数需要是哪个参数，我们通常只使用第一个参数。</p>
+<ul>
+<li><code>currentValue</code>是callback数组中正在处理的当前元素。</li>
+<li><code>index</code>是可选的，是callback数组中正在处理的当前元素的索引。</li>
+<li><code>array</code>可选，是callback map方法被调用的数组。</li>
+</ul>
+<h4 id="事例"><a href="#事例" class="headerlink" title="事例"></a>事例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;].map(parseInt)</div></pre></td></tr></table></figure>
+<p>对于每个迭代<code>map</code>, <code>parseInt()</code>传递两个参数： <strong>字符串和基数</strong>，所以实际执行的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[&apos;1&apos;,&apos;2&apos;,&apos;3&apos;].mpa((item, index)=&gt;&#123;</div><div class="line">  return parseInt(item, index);</div><div class="line">&#125;)</div><div class="line">// 里面具体如下</div><div class="line">parseInt(&apos;1&apos;, 0) // 1</div><div class="line">parseInt(&apos;2&apos;, 1) // NaN</div><div class="line">parseInt(&apos;3&apos;, 2) // NaN, 3 不是二进制</div><div class="line">// 1, NaN, NaN</div></pre></td></tr></table></figure>
+<h3 id="从排序数组中删除重复项"><a href="#从排序数组中删除重复项" class="headerlink" title="从排序数组中删除重复项"></a>从排序数组中删除重复项</h3><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">给定数组 nums = [1,1,2], </div><div class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure></p>
+<p><strong>示例 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</div><div class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure></p>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?<br>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。<br>你可以想象内部操作如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</div><div class="line">int len = removeDuplicates(nums);</div><div class="line">// 在函数里修改输入数组对于调用者是可见的。</div><div class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</div><div class="line">for (int i = 0; i &lt; len; i++) &#123;</div><div class="line">    print(nums[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>答案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @return &#123;number&#125;</div><div class="line"> */</div><div class="line">var removeDuplicates = function(nums) &#123;</div><div class="line">  if(nums.length === 0)&#123; return 0&#125;</div><div class="line">    let i = 0 ;</div><div class="line">    for(let k = 1;k&lt;nums.length;k++)&#123;</div><div class="line">        if(nums[k] !== nums[i])&#123;</div><div class="line">           nums[i] = nums[k];</div><div class="line">            i ++</div><div class="line">         &#125;</div><div class="line">    &#125;</div><div class="line">    return i+1 ;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="yangyi1024.com/2017/09/10/学习不一样的vue5:vuex(完结)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1713,163 +1882,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="yangyi1024.com/2016/12/01/JavaScript编码风格(二)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨怡">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/11735533?v=3&amp;s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨怡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/01/JavaScript编码风格(二)/" itemprop="url">JavaScript编码风格(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-01T16:32:40+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/12/01/JavaScript编码风格(二)/" class="leancloud_visitors" data-flag-title="JavaScript编码风格(二)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="对象和数据结构"><a href="#对象和数据结构" class="headerlink" title="对象和数据结构"></a><strong>对象和数据结构</strong></h2><h3 id="使用-getters-和-setters"><a href="#使用-getters-和-setters" class="headerlink" title="使用 getters 和 setters"></a>使用 getters 和 setters</h3><p>JS 没有接口或类型，因此实现这一模式是很困难的，因为我们并没有类似 <code>public</code> 和 <code>private</code> 的关键词。</p>
-<p>然而，使用 getters 和 setters 获取对象的数据远比直接使用点操作符具有优势。为什么呢？</p>
-<ol>
-<li>当需要对获取的对象属性执行额外操作时。</li>
-<li>执行 <code>set</code> 时可以增加规则对要变量的合法性进行判断。</li>
-<li>封装了内部逻辑。</li>
-<li>在存取时可以方便的增加日志和错误处理。</li>
-<li>继承该类时可以重载默认行为。</li>
-<li><p>从服务器获取数据时可以进行懒加载。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/01/JavaScript编码风格(二)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1919,7 +1931,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1941,7 +1953,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
