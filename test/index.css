@@ -63,7 +63,7 @@ body {
 .mod {
   width: 100%;
   /* height: 4430px; */
-  font-family: Roboto,PingFang SC;
+  font-family: Regular,PingFang SC;
   /* min-width: 1200px; */
   margin: 0 auto;
  
@@ -534,7 +534,7 @@ body {
   .mod {
     width: 100%;
     /* height: 4430px; */
-    font-family: Roboto,PingFang SC;
+    font-family: Regular,PingFang SC;
     /* min-width: 375px; */
     margin: 0 auto;
   }
